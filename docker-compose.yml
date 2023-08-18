@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: pawsandwhiskers
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: raminas
+
+  redis:
+    image: redis:6.2
+
+  web1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  celery_worker:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    command: celery -A pawsandwhiskers worker --loglevel=info
+
+  celery_beat:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    command: celery -A pawsandwhiskers beat --loglevel=info

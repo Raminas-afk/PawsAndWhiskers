@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animal Facts Subscription</title>
+    <!-- Include your CSS and other header elements here -->
+</head>
+<body>
+    <h1>Subscribe to Daily Animal Facts</h1>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="animal">Choose an Animal:</label>
+        <select id="animal" name="animal">
+            {% for animal in available_animals %}
+            <option value="{{ animal.name }}">{{ animal.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Subscribe</button>
+    </form>
+
+    <!-- Include your JavaScript and other footer elements here -->
+</body>
+</html>
