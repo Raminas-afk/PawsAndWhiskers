@@ -17,6 +17,3 @@ app.conf.beat_schedule = {
         'schedule': crontab(minute='*'),  # Every minute
     },
 }
-
-# worker - celery -A pawsandwhiskers worker --loglevel=info
-# beater - celery -A pawsandwhiskers beat --loglevel=info
