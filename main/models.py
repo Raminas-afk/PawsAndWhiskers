@@ -21,6 +21,7 @@ class Fact(models.Model):
 class Subscriber(models.Model):
     email = models.EmailField()
     subscribed_to = models.ForeignKey(Animal, on_delete=models.PROTECT)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.email

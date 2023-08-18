@@ -9,3 +9,12 @@ def send_confirmation_email(email, animal_object):
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject, message, from_email, recipient_list)
+
+
+def send_daily_email(subscriber, fact):
+    subject = f'Paws and Whiskers: Daily fact about {subscriber.subscribed_to} !'
+    message = fact.text
+    email = subscriber.email
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = [email]
+    send_mail(subject, message, from_email, recipient_list)
