@@ -22,6 +22,8 @@ class Subscriber(models.Model):
     email = models.EmailField()
     subscribed_to = models.ForeignKey(Animal, on_delete=models.PROTECT)
     is_active = models.BooleanField(default=True)
+    received_fact_ids = models.ManyToManyField(Fact, related_name="received_by")
+
 
     def __str__(self):
         return self.email
