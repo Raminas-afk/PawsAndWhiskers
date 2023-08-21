@@ -1,35 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Animal Facts Subscription</title>
-    <!-- Include your CSS and other header elements here -->
-</head>
-<body>
-    <h1>Subscribe to Daily Animal Facts</h1>
+{% extends "base.html" %}
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+{% block title %}Paws and Whiskers{% endblock %}
 
-    <form method="post" action="{% url 'subscribe' %}">
-        {% csrf_token %}
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="animal">Choose an Animal:</label>
-        <select id="animal" name="animal">
-            {% for animal in available_animals %}
-            <option value="{{ animal.name }}">{{ animal.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <button type="submit">Subscribe</button>
-    </form>
-
-    <!-- Include your JavaScript and other footer elements here -->
-</body>
-</html>
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col" id="form-col">
+        <form method="post" action="{% url 'subscribe' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                       aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <label for="animal" class="form-label">Choose an Animal:</label>
+            <select class="form-select" aria-label="Default select example" name="animal">
+                {% for animal in available_animals %}
+                <option value="{{ animal.name }}">{{ animal.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            {% if messages %}
+            <ul class="messages">{% for message in messages %}
+                <li>{% if message.tags %} {% endif %}{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <button type="submit" class="btn btn-primary mt-3">Subscribe</button>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
