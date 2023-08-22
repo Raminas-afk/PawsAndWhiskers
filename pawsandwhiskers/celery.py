@@ -18,4 +18,4 @@ app.conf.beat_schedule = {
     },
 }
 
-# trigger heroku redeployment
+# trigger heroku redeployment 2
