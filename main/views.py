@@ -28,10 +28,14 @@ def subscribe_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         animal_name = request.POST['animal']
-        animal_name = animal_name.capitalize()
-        animal_object = Animal.objects.filter(name=animal_name).first()
 
+        if not email or not animal_name:
+            messages.error(request, 'Please fill out the form')
+            return redirect('front-page')
+
+        animal_object = Animal.objects.filter(name__icontains=animal_name).first()
         subscriber_exists = Subscriber.objects.filter(email=email).exists()
+
         if subscriber_exists:
             error_message = 'Email already subscribed'
             messages.error(request, error_message)
