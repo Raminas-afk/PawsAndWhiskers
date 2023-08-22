@@ -6,5 +6,7 @@ urlpatterns = [
     path('', front_page, name='front-page'),
     path('subscribe/', subscribe_view, name='subscribe'),
     path('confirm/<str:token>/', confirm_email_view, name='confirm-email'),
-    path('thank-you/', thank_you_page, name='thank-you'),
+    path('thank-you/<str:token>/', thank_you_page, name='thank-you'),
 ]
+
+handler404 = 'main.views.custom_404_view'
