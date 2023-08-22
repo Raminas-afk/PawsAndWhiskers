@@ -1,0 +1,53 @@
+/* Add your custom styles here */
+body {
+    background-image: url("background.b094f5328af0.jpg");
+    background-repeat: repeat;
+    background-size: auto; /* Automatically adjust the image size */
+    background-color: #f8f9fa; /* Fallback color if image isn't available */
+}
+
+
+.col {
+    background-color:
+}
+
+.form-label {
+    font-weight: bold;
+    color: black;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 8px;
+}
+
+.form-select {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 8px;
+    width: 100%;
+}
+
+.messages {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+#form-col {
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 1rem;
+    padding: 50px 50px 127px;
+    margin-top: 83px;
+}
+
+.mb-3 {
+    margin-top: 50px;
+}
