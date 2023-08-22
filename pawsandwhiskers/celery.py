@@ -17,3 +17,5 @@ app.conf.beat_schedule = {
         'schedule': crontab(hour=12, minute=0),
     },
 }
+
+# test change for heroku
