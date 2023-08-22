@@ -14,8 +14,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send-daily-emails': {
         'task': 'main.tasks.send_daily_email_task',
-        'schedule': crontab(hour=12, minute=0),
+        'schedule': crontab(hour=4, minute=0),
     },
 }
-
-# trigger heroku redeployment 3
