@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 
 
 def send_confirmation_email(subscriber):
-    confirmation_link = f'{settings.WEBSITE_URL}/confirm/{subscriber.confirmation_token}'
+    confirmation_link = f'{settings.WEBSITE_URL}confirm/{subscriber.confirmation_token}'
     subject = 'Confirm Your Subscription to Paws and Whiskers'
     message = f'''
 
